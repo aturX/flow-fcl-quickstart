@@ -13,11 +13,11 @@ export async function setName(name) {
         import Profile from 0xProfile
 
         transaction(name: String) {
-          prepare(account: AuthAccount) {
-            account
-              .borrow<&Profile.Base{Profile.Owner}>(from: Profile.privatePath)!
-              .setName(name)
-          }
+            prepare(currentUser: AuthAccount) {
+            currentUser
+                .borrow<&{Profile.Owner}>(from: Profile.privatePath)!
+                .setName(name)
+            }
         }
       `,
     ])

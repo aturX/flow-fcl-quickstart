@@ -1112,17 +1112,17 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.12.1", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.4", "@babel/runtime@^7.8.3", "@babel/runtime@^7.8.7":
+  version "7.14.6"
+  resolved "https://registry.nlark.com/@babel/runtime/download/@babel/runtime-7.14.6.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40babel%2Fruntime%2Fdownload%2F%40babel%2Fruntime-7.14.6.tgz#535203bc0892efc7dec60bdc27b2ecf6e409062d"
+  integrity sha1-U1IDvAiS78fexgvcJ7Ls9uQJBi0=
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/runtime@^7.12.5", "@babel/runtime@^7.9.2":
   version "7.13.10"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.13.10.tgz#47d42a57b6095f4468da440388fdbad8bebf0d7d"
   integrity sha512-4QPkjJq6Ns3V/RgpEahRk+AGfL0eO6RHHtTWoNNr5mO49G6B5+X6d6THgWEAvTrznU5xYpbAlVKRYcsCgh/Akw==
-  dependencies:
-    regenerator-runtime "^0.13.4"
-
-"@babel/runtime@^7.3.1", "@babel/runtime@^7.4.4", "@babel/runtime@^7.8.3", "@babel/runtime@^7.8.7":
-  version "7.14.6"
-  resolved "https://registry.nlark.com/@babel/runtime/download/@babel/runtime-7.14.6.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40babel%2Fruntime%2Fdownload%2F%40babel%2Fruntime-7.14.6.tgz#535203bc0892efc7dec60bdc27b2ecf6e409062d"
-  integrity sha1-U1IDvAiS78fexgvcJ7Ls9uQJBi0=
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -1671,6 +1671,16 @@
     schema-utils "^2.6.5"
     source-map "^0.7.3"
 
+"@reduxjs/toolkit@^1.6.0":
+  version "1.6.0"
+  resolved "https://registry.nlark.com/@reduxjs/toolkit/download/@reduxjs/toolkit-1.6.0.tgz?cache=0&sync_timestamp=1623075844396&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40reduxjs%2Ftoolkit%2Fdownload%2F%40reduxjs%2Ftoolkit-1.6.0.tgz#0a17c6941c57341f8b31e982352b495ab69d5add"
+  integrity sha1-ChfGlBxXNB+LMemCNStJWradWt0=
+  dependencies:
+    immer "^9.0.1"
+    redux "^4.1.0"
+    redux-thunk "^2.3.0"
+    reselect "^4.0.0"
+
 "@rollup/plugin-node-resolve@^7.1.1":
   version "7.1.3"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-node-resolve/-/plugin-node-resolve-7.1.3.tgz#80de384edfbd7bfc9101164910f86078151a3eca"
@@ -1943,6 +1953,14 @@
   dependencies:
     "@types/node" "*"
 
+"@types/hoist-non-react-statics@^3.3.0":
+  version "3.3.1"
+  resolved "https://registry.nlark.com/@types/hoist-non-react-statics/download/@types/hoist-non-react-statics-3.3.1.tgz?cache=0&sync_timestamp=1621241339435&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fhoist-non-react-statics%2Fdownload%2F%40types%2Fhoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
+  integrity sha1-ESSq/lEYy1kZd66xzqrtEHDrA58=
+  dependencies:
+    "@types/react" "*"
+    hoist-non-react-statics "^3.3.0"
+
 "@types/html-minifier-terser@^5.0.0":
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/@types/html-minifier-terser/-/html-minifier-terser-5.1.1.tgz#3c9ee980f1a10d6021ae6632ca3e79ca2ec4fb50"
@@ -2019,6 +2037,16 @@
   version "1.5.4"
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.4.tgz#15925414e0ad2cd765bfef58842f7e26a7accb24"
   integrity sha512-1HcDas8SEj4z1Wc696tH56G8OlRaH/sqZOynNNB+HF0WOeXPaxTtbYzJY2oEfiUxjSKjhCKr+MvR7dCHcEelug==
+
+"@types/react-redux@^7.1.16":
+  version "7.1.18"
+  resolved "https://registry.nlark.com/@types/react-redux/download/@types/react-redux-7.1.18.tgz?cache=0&sync_timestamp=1625792662497&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Freact-redux%2Fdownload%2F%40types%2Freact-redux-7.1.18.tgz#2bf8fd56ebaae679a90ebffe48ff73717c438e04"
+  integrity sha1-K/j9Vuuq5nmpDr/+SP9zcXxDjgQ=
+  dependencies:
+    "@types/hoist-non-react-statics" "^3.3.0"
+    "@types/react" "*"
+    hoist-non-react-statics "^3.3.0"
+    redux "^4.0.0"
 
 "@types/react-transition-group@^4.2.0":
   version "4.4.2"
@@ -5735,7 +5763,7 @@ hmac-drbg@^1.0.1:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
-hoist-non-react-statics@^3.0.0, hoist-non-react-statics@^3.3.2:
+hoist-non-react-statics@^3.0.0, hoist-non-react-statics@^3.3.0, hoist-non-react-statics@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
   integrity sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==
@@ -5964,6 +5992,11 @@ immer@8.0.1:
   version "8.0.1"
   resolved "https://registry.yarnpkg.com/immer/-/immer-8.0.1.tgz#9c73db683e2b3975c424fb0572af5889877ae656"
   integrity sha512-aqXhGP7//Gui2+UrEtvxZxSquQVXTpZ7KDxfCcKAF3Vysvw0CViVaW9RZ1j1xlIYqaaaipBoqdqeibkc18PNvA==
+
+immer@^9.0.1:
+  version "9.0.5"
+  resolved "https://registry.nlark.com/immer/download/immer-9.0.5.tgz?cache=0&sync_timestamp=1625499692644&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fimmer%2Fdownload%2Fimmer-9.0.5.tgz#a7154f34fe7064f15f00554cc94c66cc0bf453ec"
+  integrity sha1-pxVPNP5wZPFfAFVMyUxmzAv0U+w=
 
 import-cwd@^2.0.0:
   version "2.1.0"
@@ -9388,7 +9421,7 @@ react-error-overlay@^6.0.9:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.9.tgz#3c743010c9359608c375ecd6bc76f35d93995b0a"
   integrity sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew==
 
-react-is@^16.7.0, react-is@^16.8.1:
+react-is@^16.13.1, react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
@@ -9402,6 +9435,18 @@ react-is@^17.0.1:
   version "17.0.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
+
+react-redux@^7.2.4:
+  version "7.2.4"
+  resolved "https://registry.nlark.com/react-redux/download/react-redux-7.2.4.tgz#1ebb474032b72d806de2e0519cd07761e222e225"
+  integrity sha1-HrtHQDK3LYBt4uBRnNB3YeIi4iU=
+  dependencies:
+    "@babel/runtime" "^7.12.1"
+    "@types/react-redux" "^7.1.16"
+    hoist-non-react-statics "^3.3.2"
+    loose-envify "^1.4.0"
+    prop-types "^15.7.2"
+    react-is "^16.13.1"
 
 react-refresh@^0.8.3:
   version "0.8.3"
@@ -9588,6 +9633,18 @@ redent@^3.0.0:
     indent-string "^4.0.0"
     strip-indent "^3.0.0"
 
+redux-thunk@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.nlark.com/redux-thunk/download/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
+  integrity sha1-UcLBmhhe1Rh6qpotCLZm0NZGdiI=
+
+redux@^4.0.0, redux@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.nlark.com/redux/download/redux-4.1.0.tgz?cache=0&sync_timestamp=1619286844146&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fredux%2Fdownload%2Fredux-4.1.0.tgz#eb049679f2f523c379f1aff345c8612f294c88d4"
+  integrity sha1-6wSWefL1I8N58a/zRchhLylMiNQ=
+  dependencies:
+    "@babel/runtime" "^7.9.2"
+
 regenerate-unicode-properties@^8.2.0:
   version "8.2.0"
   resolved "https://registry.yarnpkg.com/regenerate-unicode-properties/-/regenerate-unicode-properties-8.2.0.tgz#e5de7111d655e7ba60c057dbe9ff37c87e65cdec"
@@ -9759,6 +9816,11 @@ requires-port@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=
+
+reselect@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.npm.taobao.org/reselect/download/reselect-4.0.0.tgz#f2529830e5d3d0e021408b246a206ef4ea4437f7"
+  integrity sha1-8lKYMOXT0OAhQIskaiBu9OpEN/c=
 
 resolve-cwd@^2.0.0:
   version "2.0.0"

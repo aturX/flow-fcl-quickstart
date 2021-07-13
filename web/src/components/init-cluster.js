@@ -1,6 +1,6 @@
 import {useEffect} from "react"
-import {useCurrentUser} from "./hooks/current-user"
-import {useInit} from "./hooks/init"
+import {useCurrentUser} from "../hooks/current-user"
+import {useInit} from "../hooks/init"
 
 const fmtBool = bool => (bool ? "已创建" : "不存在")
 

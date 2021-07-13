@@ -7,7 +7,7 @@ export async function setFns(fns) {
       fcl.proposer(fcl.authz),
       fcl.payer(fcl.authz),
       fcl.authorizations([fcl.authz]),
-      fcl.limit(35),
+      fcl.limit(335),
       fcl.args([fcl.arg(fns, t.String)]),
       fcl.transaction`
         import Profile from 0xProfile

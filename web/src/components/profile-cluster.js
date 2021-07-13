@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react"
-import {useCurrentUser} from "./hooks/current-user"
-import {useProfile} from "./hooks/profile"
+import {useCurrentUser} from "../hooks/current-user"
+import {useProfile} from "../hooks/profile"
 
 function ProfileForm() {
   const cu = useCurrentUser()

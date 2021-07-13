@@ -3,7 +3,6 @@ import * as fcl from "@onflow/fcl"
 
 export async function initProfile(address) {
   console.log(address)
-  console.log(fcl.currentUser().authorization)
   const txId = await fcl
     .send([
       fcl.proposer(fcl.authz), // current user acting as the nonce

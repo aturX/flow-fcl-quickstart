@@ -8,7 +8,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 // flow quick start
-import {AuthCluster} from "./auth-cluster"
+import AuthCluster from "./components/auth-cluster"
+ 
 // import {InitCluster} from "./init-cluster"
 // import {useCurrentUser} from "./hooks/current-user"
 // import {ProfileCluster} from "./profile-cluster"
@@ -28,7 +29,8 @@ import {AuthCluster} from "./auth-cluster"
 //     </div>
 //   )
 // }
- 
+
+
 
 function Copyright() {
   return (
@@ -79,7 +81,7 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function App() {
   const classes = useStyles();
-
+ 
   return (
     <React.Fragment>
       <CssBaseline />
@@ -98,20 +100,17 @@ export default function App() {
               Flow User Profile
             </Typography>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              You can share your personal information on the Flow blockchain now.
+              You can share your personal information on the Flow blockchain now. 
+              <a href="https://github.com/aturX/flow-fcl-quickstart">Visit Code</a>
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justifyContent="center">
                 <Grid item>
                   <AuthCluster />
                 </Grid>
-                <Grid item>
-                  <Button variant="outlined" color="primary">
-                    <a href="https://github.com/aturX/flow-fcl-quickstart">Visit Code</a>
-                  </Button>
-                </Grid>
               </Grid>
             </div>
+ 
           </Container>
         </div>
         <Container className={classes.cardGrid} maxWidth="md">

@@ -7,7 +7,7 @@ export async function setRole(role) {
       fcl.proposer(fcl.authz),
       fcl.payer(fcl.authz),
       fcl.authorizations([fcl.authz]),
-      fcl.limit(35),
+      fcl.limit(335),
       fcl.args([fcl.arg(role, t.String)]),
       fcl.transaction`
         import Profile from 0xProfile

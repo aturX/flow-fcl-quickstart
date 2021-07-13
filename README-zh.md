@@ -1,14 +1,42 @@
 # Flow 快速开始构建 dApp
 
-[Flow Doc](https://docs.onflow.org/flow-js-sdk/flow-app-quickstart#extra-credit---adding-an-interface-that-uses-our-functions)
+此项目通过官方[flow-app-quickstart](https://docs.onflow.org/flow-js-sdk/flow-app-quickstart#extra-credit---adding-an-interface-that-uses-our-functions)提供的思路重新构建了最新版本的dApp。
 
-# 启动
+由于版本迭代更新，最新版本通过`Flow CLI`在测试网部署流程变得比较容易简洁，但官方文档部分代码存在过时导致`Cadence`合约无法运行，`Flow FCL` 调用也存在一些差异，另外目前已经可以集成 Alchemy 进行dApp开发了。 所以在这里将整个过程以及遇到的问题一起汇总并更新了这个 `Demo`， 帮助新的Flow开发者能够快速开始。
+
+
+
+
+# 启动/依赖
+
+- start 
 
 ```
 cd web 
 yarn install 
 yarn start
 ```
+
+- Wallet 
+
+[Blocto](https://blocto.portto.io/)
+
+[Blocto Wallet Doc](https://docs.blocto.app/blocto-sdk/flow)
+
+- UI
+
+[material-ui](https://material-ui.com/)
+
+- API 
+
+[alchemy](https://www.alchemy.com/)
+
+[alchemy doc](https://docs.alchemy.com/flow/guides/getting-started)
+
+- IPFS 
+
+[Pinata](https://pinata.cloud/)
+
 
 
 
@@ -85,9 +113,9 @@ flow keys generate
 
 获得如下结果：
 ```
-Store private key safely and don't share with anyone!
-Private Key      5f471ca9aadbe142f737aa9901fa8934824b544820ce43b27ae9b730d7668bee
-Public Key       4a4585b58ae2c8e81e5d516ae679a3b0cc68badfc2ab0c5688cf599c52154d5c6d6a79059aba6ec2a2503f34cd777e0b25ae66086797b5e7f57b0be02636be2e 
+ Store private key safely and don't share with anyone! 
+Private Key      a2df7ec91b9b3d65dced51f9d37494397d2233f37fb183303be93a8c4b8fb25c 
+Public Key       20a3fcf4377a8a4f32a146db3178ae31cd72d50d6fbc0c517d19ab36bc791931dd75e51961a6f63559d09ed29528ac793357e91a7d1fa410ea1b5f1f92c1e7db
 ```
 **注意: 以上为测试地址，任何人可以使用。**☝️
 
@@ -98,12 +126,12 @@ Public Key       4a4585b58ae2c8e81e5d516ae679a3b0cc68badfc2ab0c5688cf599c52154d5
 
 等待一段时间后，你就能获得你的测试账号地址如：
 ```
-0x6a456b9adb68d928
+0x8f8f12c1c5ba67e9
 ```
 
 使用 `Flow CLI` 查看一下地址信息：
 ```
-flow accounts get 0x6a456b9adb68d928 --network testnet
+flow accounts get 0x8f8f12c1c5ba67e9 --network testnet
 ```
 可以看到，该地址中，已经预存了1000个`Flow Token`, 如果还需要更多 `Flow Token` 进行如下操作。
 
@@ -162,8 +190,8 @@ flow init
 错误的做法：
 ```
 "testnet-account": {
-      "address": "6a456b9adb68d928",
-      "keys": "5f471ca9aadbe142f737aa9901fa8934824b544820ce43b27ae9b730d7668bee"
+      "address": "8f8f12c1c5ba67e9",
+      "keys": "a2df7ec91b9b3d65dced51f9d37494397d2233f37fb183303be93a8c4b8fb25c"
     }
 ```
 **注意： `address` 不用填写 `0x` 前缀。**
@@ -209,8 +237,8 @@ flow init
 			"key": "1d78a879cae624026e38693238c98ed4e110a8a6e5a35f5d0719d0c0758675f3"
 		},
 		"testnet-account": {
-			"address":"6a456b9adb68d928", 
-			"keys": "5f471ca9aadbe142f737aa9901fa8934824b544820ce43b27ae9b730d7668bee"
+			"address":"8f8f12c1c5ba67e9", 
+			"keys": "a2df7ec91b9b3d65dced51f9d37494397d2233f37fb183303be93a8c4b8fb25c"
 		}
 		
 	},
@@ -229,7 +257,7 @@ flow init
 ```
 
 3. 合约部署
-首先，先进行一个 `HelloWorld.cdc` 合约的部署，来演示完成中流程。
+首先，先进行一个 `HelloWorld.cdc` 合约的部署，来演示完整的部署流程。
 
 
 当你完成了你的Cadence合约，将 `flow.json` 配置文件填好后, 执行如下命令进行部署:
@@ -242,16 +270,16 @@ flow project deploy --network=testnet
 ```
 Deploying 1 contracts for accounts: testnet-account
 
-HelloWorld -> 0x6a456b9adb68d928 (6b7bc1cac8fe865ec4b23db5d835a99b47cae8fcb9130921065916dfcc7b533f)
+HelloWorld -> 0x8f8f12c1c5ba67e9 (6b7bc1cac8fe865ec4b23db5d835a99b47cae8fcb9130921065916dfcc7b533f)
 
 
 All contracts deployed successfully
 ```
 这个时候我们去 测试网区块浏览器或者采用Flow CLI查看，可以看到我们成功部署了合约。
 ```
-https://flow-view-source.com/testnet/account/0x6a456b9adb68d928
+https://flow-view-source.com/testnet/account/0x8f8f12c1c5ba67e9
 
-flow accounts get 0x6a456b9adb68d928 --network testnet
+flow accounts get 0x8f8f12c1c5ba67e9 --network testnet
 ```
 **注意： 😵 测试网浏览器`地址`一定要加 `0x`** 
 
@@ -260,8 +288,8 @@ flow accounts get 0x6a456b9adb68d928 --network testnet
 
 1. 在 Playground 中完成了大部分的 Cadence 合约后，将其存放在项目文件夹 Cadence中，按照类型划分。
 
-[Playground 代码参考](https://play.onflow.org/501caf65-3db6-4dc7-a2f6-2e0ae875cec9?type=script&id=c312afb4-6d78-4c9b-9ae6-f37a683e4afd)：
-https://play.onflow.org/501caf65-3db6-4dc7-a2f6-2e0ae875cec9?type=script&id=c312afb4-6d78-4c9b-9ae6-f37a683e4afd
+[Playground 代码参考](https://play.onflow.org/501caf65-3db6-4dc7-a2f6-2e0ae875cec9?type=tx&id=47f4e8e2-632f-4fbd-a53a-6515b9edd208)：
+https://play.onflow.org/501caf65-3db6-4dc7-a2f6-2e0ae875cec9?type=tx&id=47f4e8e2-632f-4fbd-a53a-6515b9edd208
 
 
 ```
@@ -276,26 +304,28 @@ cadence
 ```
 flow project deploy --network=testnet --update
 ```
+
+
 如下结果表示部署成功：
 ```
 Deploying 2 contracts for accounts: testnet-account
 
-HelloWorld -> 0x6a456b9adb68d928 (0e571ad01fb00ea00f90771d124f4b5b11ccf19a8862f1a742084871425cf4ac)
+HelloWorld -> 0x8f8f12c1c5ba67e9 (0e571ad01fb00ea00f90771d124f4b5b11ccf19a8862f1a742084871425cf4ac)
 
-Profile -> 0x6a456b9adb68d928 (851bd8f3c176ead30b58a63f0cf5f9ae0709cc40d330573e709daf02b553fb9b)
+Profile -> 0x8f8f12c1c5ba67e9 (851bd8f3c176ead30b58a63f0cf5f9ae0709cc40d330573e709daf02b553fb9b)
 
 
  All contracts deployed successfully
 ```
 
-这个时候，我们可以将 `scripts` 和 `transactions` 中的 `Profile` 地址都替换为 `0x6a456b9adb68d928`,因为我们在 `Playground`中进行部署的地址都是类似 `0x01` 和 `0x02`，这些并不是 Flow 测试网中的实际部署地址。
+这个时候，我们可以将 `scripts` 和 `transactions` 中的 `Profile` 地址都替换为 `0x8f8f12c1c5ba67e9`,因为我们在 `Playground`中进行部署的地址都是类似 `0x01` 和 `0x02`，这些并不是 Flow 测试网中的实际部署地址。
 
 
 验证一下我们的合约部署情况：
 ```
-https://flow-view-source.com/testnet/account/0x6a456b9adb68d928
+https://flow-view-source.com/testnet/account/0x8f8f12c1c5ba67e9
 
-flow accounts get 0x6a456b9adb68d928 --network testnet
+flow accounts get 0x8f8f12c1c5ba67e9 --network testnet
 ```
 
 
@@ -351,7 +381,7 @@ REACT_APP_WALLET_DISCOVERY= https://fcl-discovery.onflow.org/testnet/authn
 
 # CONTRACT_PROFILE will be the address that has the Profile
 # smart contract we will be using in this guide.
-REACT_APP_CONTRACT_PROFILE= 0x6a456b9adb68d928
+REACT_APP_CONTRACT_PROFILE= 0x8f8f12c1c5ba67e9
 
 ```
 
@@ -383,7 +413,7 @@ fcl.config()
 
 4. 检查用户是否初始化Flow Profile
   
-我们部署的`Profile`合约在这里：https://flow-view-source.com/testnet/account/0x6a456b9adb68d928/contract/Profile
+我们部署的`Profile`合约在这里：https://flow-view-source.com/testnet/account/0x8f8f12c1c5ba67e9/contract/Profile
 
 我们在`Flow FCL`中调用 `Cadence scripts` 的流程是这样的：`fcl.send([]).then(fcl.decode)`.
 
@@ -441,7 +471,7 @@ export async function fetchProfile(address) {
 }
 ```
 
-由于 Profile 合约部署的地址，我们在配置文件`config.js`中已经进行了记录 ，所以这里只需要使用 `0xProfile` 替代 `0x6a456b9adb68d928`
+由于 Profile 合约部署的地址，我们在配置文件`config.js`中已经进行了记录 ，所以这里只需要使用 `0xProfile` 替代 `0x8f8f12c1c5ba67e9`
 
 由于初次使用dApp的话，用户信息是尚未初始化的，所以需要初始化用户Profile信息。
 初始化Profile信息，需要我们发起 `transactions` 交易，这与上面的两个 `scripts` 交易是不同的。它需要用户的签名授权，所需要的参数也有所不同。
@@ -494,13 +524,41 @@ export async function initProfile(address) {
 }
 ```
 注意： limit 值不够，会引发报错。`proposer`、`authorizations`、`payer` 应该依次执行。
+关于Flow 钱包账户体系的知识可以查看：[Accounts, Keys & Signing](https://docs.onflow.org/concepts/accounts-and-keys/) 
 
 关于钱包的配置也在`config.js`的`challenge.handshake`字段中设置。
 
 各个`scripts` 和 `transactions` 完成的过程基本上类似。详细查看 `src/flow` 中的文件，这里不再逐一分解。
 
 
+另外，在我快要完成测试的时候，我修改了一次 Cadence 合约的函数，导致我无法更新合约了。 
+这个时候，可以 删除原来的合约，然后重新部署,最后查看区块浏览器。 但这样数据是不会保存的。
+
+```
+flow accounts remove-contract Profile --network testnet
+
+flow project deploy --network=testnet
+
+https://flow-view-source.com/testnet/account/0x8f8f12c1c5ba67e9
+
+```
+删除合约需要注意,命令会读取`flow.json`文件的配置信息， 但它执行的`accounts`的地址总是 `emulator-account` 中记录的信息，我找不到合适的方法去调用出`testnet-account`。 
+有个偷懒的办法，把`emulator-account`里面的内容换成`testnet-account`的。
+
+但是，你发现，你无法重新部署新合约，因为在 `stores` 中包含了同名合约，修改合约名字来解决这个问题吧。
+我把配置文件和Cadence文件`Profile`都改为`Profile1`。 但如果变量参数太多，建议直接换个地址部署。
+
+
+
 # 五、Flow dApp 前端开发与用户交互
 
 通过上面的基本交互， 我们接下来需要完成 React 对于合约交互中各种状态的管理。
+此部分内容属 `React` 知识，不再分析,仅供参考：
+```
+web/flow
+web/hooks
+web/components
+```
+更多详解查看: [flow-app-quickstart](https://docs.onflow.org/flow-js-sdk/flow-app-quickstart#extra-credit---adding-an-interface-that-uses-our-functions)
+
 

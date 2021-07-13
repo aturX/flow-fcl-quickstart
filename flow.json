@@ -2,7 +2,7 @@
 	"emulators": {
 		"default": {
 			"port": 3569,
-			"serviceAccount": "emulator-account"
+			"serviceAccount": "testnet-account"
 		}
 	},
 	"contracts": {
@@ -34,8 +34,8 @@
 			"key": "1d78a879cae624026e38693238c98ed4e110a8a6e5a35f5d0719d0c0758675f3"
 		},
 		"testnet-account": {
-			"address":"6a456b9adb68d928", 
-			"keys": "5f471ca9aadbe142f737aa9901fa8934824b544820ce43b27ae9b730d7668bee"
+			"address":"8f8f12c1c5ba67e9", 
+			"keys": "a2df7ec91b9b3d65dced51f9d37494397d2233f37fb183303be93a8c4b8fb25c"
 		}
 		
 	},

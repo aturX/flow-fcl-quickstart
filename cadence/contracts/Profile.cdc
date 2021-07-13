@@ -44,21 +44,31 @@ This will lead to predictability in how applications can look up the data.
 ### Cadence
 -----------
 
-    import Profile from 0x01
+import Profile from 0x01
 
-    transaction {
-      let address: Address
-      prepare(currentUser: AuthAccount) {
-        self.address = currentUser.address
-        if !Profile.check(self.address) {
-          currentUser.save(<- Profile.new(), to: Profile.privatePath)
-          currentUser.link<&Profile.Base{Profile.Public}>(Profile.publicPath, target: Profile.privatePath)
-        }
-      }
-      post {
-        Profile.check(self.address): "Account was not initialized"
-      }
+transaction {
+    // We want the account's address for later so we can verify if the account was initialized properly
+    let address: Address
+
+prepare(currentUser: AuthAccount) {
+    // save the address for the post check
+    self.address = currentUser.address
+
+    // Only initialize the account if it hasn't already been initialized
+    if !Profile.check(self.address) {
+        // This creates and stores the profile in the user's account
+        currentUser.save(<- Profile.new(self.address), to: Profile.privatePath)
+
+        // This creates the public capability that lets applications read the profile's info
+        currentUser.link<&Profile.Base{Profile.Public}>(Profile.publicPath, target: Profile.privatePath)
     }
+    }
+    
+    // verify that the account has been initialized
+    post {
+    Profile.check(self.address): "Account was not initialized"
+    }
+}
     
 -------
 ### FCL
@@ -74,7 +84,7 @@ export async function initProfile(address) {
       fcl.payer(fcl.authz), // current user is responsible for paying for the transaction
       fcl.proposer(fcl.authz), // current user acting as the nonce
       fcl.authorizations([fcl.authz]), // current user will be first AuthAccount
-      fcl.limit(35), // set the compute limit
+      fcl.limit(135), // set the compute limit
       fcl.args([fcl.arg(address, t.Address)]),
       fcl.transaction`
       import Profile from 0xProfile
@@ -90,7 +100,7 @@ export async function initProfile(address) {
           // Only initialize the account if it hasn't already been initialized
           if !Profile.check(self.address) {
               // This creates and stores the profile in the user's account
-              currentUser.save(<- Profile.new(), to: Profile.privatePath)
+              currentUser.save(<- Profile.new(self.address), to: Profile.privatePath)
       
               // This creates the public capability that lets applications read the profile's info
               currentUser.link<&Profile.Base{Profile.Public}>(Profile.publicPath, target: Profile.privatePath)
@@ -147,7 +157,7 @@ export async function setName(name) {
       fcl.proposer(fcl.authz),
       fcl.payer(fcl.authz),
       fcl.authorizations([fcl.authz]),
-      fcl.limit(35),
+      fcl.limit(135),
       fcl.args([fcl.arg(name, t.String)]),
       fcl.transaction`
         import Profile from 0xProfile
@@ -212,7 +222,7 @@ export async function fetchProfile(address) {
 ### Cadence
 -----------
 
-    import Profile from 0xba1132bc08f82fe2
+    import Profile from 0x01
 
     pub fun main(addresses: [Address]): {Address: Profile.ReadOnly} {
       return Profile.readMultiple(addresses)
@@ -283,6 +293,8 @@ export async function isInitialized(address) {
 
 */
 pub contract Profile {
+  pub var allUser: [Address]
+
   pub let publicPath: PublicPath
   pub let privatePath: StoragePath
 
@@ -379,7 +391,12 @@ pub contract Profile {
     }
   }
   
+  pub fun allUsers(): [Address] {
+    return self.allUser
+  }
+
   pub fun new(): @Profile.Base {
+    self.allUser.append(self.account.address)  
     return <- create Base()
   }
   
@@ -416,6 +433,8 @@ pub contract Profile {
 
     
   init() {
+    self.allUser = []
+
     self.publicPath = /public/profile
     self.privatePath = /storage/profile
     
@@ -424,6 +443,6 @@ pub contract Profile {
     
     self.account
       .borrow<&Base{Owner}>(from: self.privatePath)!
-      .setName("Flow User")
+      .setName("dApp Creater")
   }
 }

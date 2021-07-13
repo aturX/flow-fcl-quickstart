@@ -1,4 +1,4 @@
-import Profile from 0x6a456b9adb68d928
+import Profile from 0x8f8f12c1c5ba67e9
 
 transaction {
     // We want the account's address for later so we can verify if the account was initialized properly
@@ -11,7 +11,7 @@ prepare(currentUser: AuthAccount) {
     // Only initialize the account if it hasn't already been initialized
     if !Profile.check(self.address) {
         // This creates and stores the profile in the user's account
-        currentUser.save(<- Profile.new(), to: Profile.privatePath)
+        currentUser.save(<- Profile.new(self.address), to: Profile.privatePath)
 
         // This creates the public capability that lets applications read the profile's info
         currentUser.link<&Profile.Base{Profile.Public}>(Profile.publicPath, target: Profile.privatePath)

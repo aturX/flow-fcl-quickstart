@@ -1,5 +1,4 @@
 import * as fcl from "@onflow/fcl"
-// import * as t from "@onflow/types"
 
 export async function initProfile(address) {
   console.log(address)
@@ -15,16 +14,16 @@ export async function initProfile(address) {
       transaction {
           // We want the account's address for later so we can verify if the account was initialized properly
           let address: Address
-      
+
       prepare(currentUser: AuthAccount) {
           // save the address for the post check
           self.address = currentUser.address
-      
+
           // Only initialize the account if it hasn't already been initialized
           if !Profile.check(self.address) {
               // This creates and stores the profile in the user's account
-              currentUser.save(<- Profile.new(), to: Profile.privatePath)
-      
+              currentUser.save(<- Profile.new(self.address), to: Profile.privatePath)
+
               // This creates the public capability that lets applications read the profile's info
               currentUser.link<&Profile.Base{Profile.Public}>(Profile.publicPath, target: Profile.privatePath)
           }

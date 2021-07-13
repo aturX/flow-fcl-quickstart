@@ -2,7 +2,7 @@
 import * as fcl from "@onflow/fcl"
 
 
-console.log(process.env.REACT_APP_ALCHEMY_API_KEY)
+console.log(process.env.REACT_APP_CONTRACT_PROFILE)
 fcl.config()
   .put("grpc.metadata", {"api_key": process.env.REACT_APP_ALCHEMY_API_KEY})
   .put("accessNode.api", process.env.REACT_APP_ACCESS_NODE) // Configure FCL's Alchemy Access Node

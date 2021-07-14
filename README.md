@@ -399,7 +399,7 @@ fcl.config()
 
 3. FCL realizes authorization and login
 
-由于 Flow 的账户体系与以太坊的不同，在授权登录时并不是采用 Metamask 等实现。而是推荐采用 [Blocto 钱包进行登录](https://docs.blocto.app/blocto-sdk/flow/login-register)。
+ 
 
 Because the account system of Flow is different from that of Ethereum, MetaMask and other implementations are not adopted when authorizing login.But [Use Blocto Wallet to log in](https://docs.blocto.app/blocto-sdk/flow/login-register)  is recommended for the Flow dApp.
 

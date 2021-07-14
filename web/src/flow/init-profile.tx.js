@@ -9,7 +9,7 @@ export async function initProfile(address) {
       fcl.payer(fcl.authz), // current user is responsible for paying for the transaction
       fcl.limit(135), // set the compute limit
       fcl.transaction`
-      import Profile from 0xProfile
+      import Profile1 from 0xProfile
 
       transaction {
           // We want the account's address for later so we can verify if the account was initialized properly
@@ -20,18 +20,18 @@ export async function initProfile(address) {
           self.address = currentUser.address
 
           // Only initialize the account if it hasn't already been initialized
-          if !Profile.check(self.address) {
-              // This creates and stores the profile in the user's account
-              currentUser.save(<- Profile.new(self.address), to: Profile.privatePath)
+          if !Profile1.check(self.address) {
+              // This creates and stores the profile1 in the user's account
+              currentUser.save(<- Profile1.new(self.address), to: Profile1.privatePath)
 
-              // This creates the public capability that lets applications read the profile's info
-              currentUser.link<&Profile.Base{Profile.Public}>(Profile.publicPath, target: Profile.privatePath)
+              // This creates the public capability that lets applications read the profile1's info
+              currentUser.link<&Profile1.Base{Profile1.Public}>(Profile1.publicPath, target: Profile1.privatePath)
           }
           }
           
           // verify that the account has been initialized
           post {
-          Profile.check(self.address): "Account was not initialized"
+          Profile1.check(self.address): "Account was not initialized"
           }
       }
       `

@@ -7,10 +7,10 @@ export async function fetchProfile(address) {
   return fcl
     .send([
       fcl.script`
-        import Profile from 0xProfile
+        import Profile1 from 0xProfile
 
-        pub fun main(address: Address): Profile.ReadOnly? {
-            return Profile.read(address)
+        pub fun main(address: Address): Profile1.ReadOnly? {
+            return Profile1.read(address)
         }
       `,
       fcl.args([fcl.arg(address, t.Address)]),

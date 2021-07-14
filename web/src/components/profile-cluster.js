@@ -25,7 +25,6 @@ function ProfileCluster(profile) {
  
     if (profile == null) return null
 
-    console.log("ProfileCluster-profile", profile)
     const user = profile.user
     return (
         <Card className={classes.card}>
@@ -108,7 +107,7 @@ function ProfileCluster(profile) {
         </CardContent>
       </Card>
     )
-  }
+}
 
 export default function ProfileUsers() {
 

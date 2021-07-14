@@ -537,7 +537,7 @@ export async function initProfile(address) {
 ```
 flow accounts remove-contract Profile --network testnet
 
-flow project deploy --network=testnet
+flow project deploy --network=testnet --update
 
 https://flow-view-source.com/testnet/account/0x8f8f12c1c5ba67e9
 
@@ -546,7 +546,7 @@ https://flow-view-source.com/testnet/account/0x8f8f12c1c5ba67e9
 有个偷懒的办法，把`emulator-account`里面的内容换成`testnet-account`的。
 
 但是，你发现，你无法重新部署新合约，因为在 `stores` 中包含了同名合约，修改合约名字来解决这个问题吧。
-我把配置文件和Cadence文件`Profile`都改为`Profile1`。 但如果变量参数太多，建议直接换个地址部署。
+我把配置文件和Cadence文件`Profile`都改为`Profile1`。 但如果变量参数太多，建议直接换个地址部署。(暂时没找到好办法)
 
 
 

@@ -5,10 +5,10 @@ export async function allUsers() {
   return fcl
     .send([
       fcl.script`
-        import Profile from 0xProfile
+        import Profile1 from 0xProfile
 
         pub fun main(): [Address]? {
-            return Profile.allUsers()
+            return Profile1.allUsers()
         }
       `,
     ])

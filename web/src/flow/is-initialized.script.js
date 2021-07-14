@@ -8,10 +8,10 @@ export async function isInitialized(address) {
   return fcl
     .send([
       fcl.script`
-        import Profile from 0xProfile
+        import Profile1 from 0xProfile
 
         pub fun main(address: Address): Bool {
-          return Profile.check(address)
+          return Profile1.check(address)
         }
       `,
       fcl.args([fcl.arg(address, t.Address)]),

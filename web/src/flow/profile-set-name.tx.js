@@ -10,12 +10,12 @@ export async function setName(name) {
       fcl.limit(135),
       fcl.args([fcl.arg(name, t.String)]),
       fcl.transaction`
-        import Profile from 0xProfile
+        import Profile1 from 0xProfile
 
         transaction(name: String) {
             prepare(currentUser: AuthAccount) {
             currentUser
-                .borrow<&{Profile.Owner}>(from: Profile.privatePath)!
+                .borrow<&{Profile1.Owner}>(from: Profile1.privatePath)!
                 .setName(name)
             }
         }

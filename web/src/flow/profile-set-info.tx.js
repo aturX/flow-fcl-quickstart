@@ -10,12 +10,12 @@ export async function setInfo(info) {
       fcl.limit(335),
       fcl.args([fcl.arg(info, t.String)]),
       fcl.transaction`
-        import Profile from 0xProfile
+        import Profile1 from 0xProfile
 
         transaction(info: String) {
             prepare(currentUser: AuthAccount) {
             currentUser
-                .borrow<&{Profile.Owner}>(from: Profile.privatePath)!
+                .borrow<&{Profile1.Owner}>(from: Profile1.privatePath)!
                 .setInfo(info)
             }
         }

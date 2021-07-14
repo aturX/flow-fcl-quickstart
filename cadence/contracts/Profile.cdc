@@ -44,31 +44,21 @@ This will lead to predictability in how applications can look up the data.
 ### Cadence
 -----------
 
-import Profile from 0x01
+    import Profile from 0x01
 
-transaction {
-    // We want the account's address for later so we can verify if the account was initialized properly
-    let address: Address
-
-prepare(currentUser: AuthAccount) {
-    // save the address for the post check
-    self.address = currentUser.address
-
-    // Only initialize the account if it hasn't already been initialized
-    if !Profile.check(self.address) {
-        // This creates and stores the profile in the user's account
-        currentUser.save(<- Profile.new(self.address), to: Profile.privatePath)
-
-        // This creates the public capability that lets applications read the profile's info
-        currentUser.link<&Profile.Base{Profile.Public}>(Profile.publicPath, target: Profile.privatePath)
+    transaction {
+      let address: Address
+      prepare(currentUser: AuthAccount) {
+        self.address = currentUser.address
+        if !Profile.check(self.address) {
+          currentUser.save(<- Profile.new(), to: Profile.privatePath)
+          currentUser.link<&Profile.Base{Profile.Public}>(Profile.publicPath, target: Profile.privatePath)
+        }
+      }
+      post {
+        Profile.check(self.address): "Account was not initialized"
+      }
     }
-    }
-    
-    // verify that the account has been initialized
-    post {
-    Profile.check(self.address): "Account was not initialized"
-    }
-}
     
 -------
 ### FCL
@@ -100,7 +90,7 @@ export async function initProfile(address) {
           // Only initialize the account if it hasn't already been initialized
           if !Profile.check(self.address) {
               // This creates and stores the profile in the user's account
-              currentUser.save(<- Profile.new(self.address), to: Profile.privatePath)
+              currentUser.save(<- Profile.new(), to: Profile.privatePath)
       
               // This creates the public capability that lets applications read the profile's info
               currentUser.link<&Profile.Base{Profile.Public}>(Profile.publicPath, target: Profile.privatePath)
@@ -222,7 +212,7 @@ export async function fetchProfile(address) {
 ### Cadence
 -----------
 
-    import Profile from 0x01
+    import Profile from 0xba1132bc08f82fe2
 
     pub fun main(addresses: [Address]): {Address: Profile.ReadOnly} {
       return Profile.readMultiple(addresses)
@@ -292,7 +282,7 @@ export async function isInitialized(address) {
 }
 
 */
-pub contract Profile {
+pub contract Profile1 {
   pub var allUser: [Address]
 
   pub let publicPath: PublicPath
@@ -304,7 +294,7 @@ pub contract Profile {
     pub fun getRole(): String
     pub fun getFns(): String
     pub fun getInfo(): String
-    pub fun asReadOnly(): Profile.ReadOnly
+    pub fun asReadOnly(): Profile1.ReadOnly
   }
   
   pub resource interface Owner {
@@ -361,8 +351,8 @@ pub contract Profile {
     pub fun setFns(_ fns: String) { self.fns = fns }
     pub fun setInfo(_ info: String) { self.info = info }
     
-    pub fun asReadOnly(): Profile.ReadOnly {
-      return Profile.ReadOnly(
+    pub fun asReadOnly(): Profile1.ReadOnly {
+      return Profile1.ReadOnly(
         address: self.owner?.address,
         name: self.getName(),
         avatar: self.getAvatar(),
@@ -395,37 +385,37 @@ pub contract Profile {
     return self.allUser
   }
 
-  pub fun new(): @Profile.Base {
-    self.allUser.append(self.account.address)  
+  pub fun new(_ address: Address): @Profile1.Base {
+    self.allUser.append(address)  
     return <- create Base()
   }
   
   pub fun check(_ address: Address): Bool {
     return getAccount(address)
-      .getCapability<&{Profile.Public}>(Profile.publicPath)
+      .getCapability<&{Profile1.Public}>(Profile1.publicPath)
       .check()
   }
   
-  pub fun fetch(_ address: Address): &{Profile.Public} {
+  pub fun fetch(_ address: Address): &{Profile1.Public} {
     return getAccount(address)
-      .getCapability<&{Profile.Public}>(Profile.publicPath)
+      .getCapability<&{Profile1.Public}>(Profile1.publicPath)
       .borrow()!
   }
   
-  pub fun read(_ address: Address): Profile.ReadOnly? {
-    if let profile = getAccount(address).getCapability<&{Profile.Public}>(Profile.publicPath).borrow() {
-      return profile.asReadOnly()
+  pub fun read(_ address: Address): Profile1.ReadOnly? {
+    if let profile1 = getAccount(address).getCapability<&{Profile1.Public}>(Profile1.publicPath).borrow() {
+      return profile1.asReadOnly()
     } else {
       return nil
     }
   }
   
-  pub fun readMultiple(_ addresses: [Address]): {Address: Profile.ReadOnly} {
-    let profiles: {Address: Profile.ReadOnly} = {}
+  pub fun readMultiple(_ addresses: [Address]): {Address: Profile1.ReadOnly} {
+    let profiles: {Address: Profile1.ReadOnly} = {}
     for address in addresses {
-      let profile = Profile.read(address)
-      if profile != nil {
-        profiles[address] = profile!
+      let profile1 = Profile1.read(address)
+      if profile1 != nil {
+        profiles[address] = profile1!
       }
     }
     return profiles
@@ -435,14 +425,16 @@ pub contract Profile {
   init() {
     self.allUser = []
 
-    self.publicPath = /public/profile
-    self.privatePath = /storage/profile
+    self.publicPath = /public/profile1
+    self.privatePath = /storage/profile1
     
-    self.account.save(<- self.new(), to: self.privatePath)
+    self.account.save(<- self.new(self.account.address), to: self.privatePath)
     self.account.link<&Base{Public}>(self.publicPath, target: self.privatePath)
     
     self.account
       .borrow<&Base{Owner}>(from: self.privatePath)!
       .setName("dApp Creater")
+
+    
   }
 }

@@ -7,7 +7,7 @@
 	},
 	"contracts": {
 		"HelloWorld": "./cadence/contracts/HelloWorld.cdc",
-		"Profile": "./cadence/contracts/Profile.cdc",
+		"Profile1": "./cadence/contracts/Profile.cdc",
 		"FungibleToken": {
 			"source": "./cadence/contracts/FungibleToken.cdc",
 			"aliases": {
@@ -43,7 +43,7 @@
 		"testnet": {
 			"testnet-account": [
 			  "HelloWorld",
-			  "Profile"
+			  "Profile1"
 			]
 		  },
 		  "emulator": {

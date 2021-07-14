@@ -4,7 +4,13 @@
 
 由于版本迭代更新，最新版本通过`Flow CLI`在测试网部署流程变得比较容易简洁，但官方文档部分代码存在过时导致`Cadence`合约无法运行，`Flow FCL` 调用也存在一些差异，另外目前已经可以集成 Alchemy 进行dApp开发了。 所以在这里将整个过程以及遇到的问题一起汇总并更新了这个 `Demo`， 帮助新的Flow开发者能够快速开始。
 
+Demo:  [visit](https://flowfans.on.fleek.co/) 
 
+![image](https://swarm-gateways.net/bzz:/918fbce211983085102ea2fbc47ac128c1c795e7afc3727561c0f176120d5082/1626232617(1).jpg)
+
+1. 用户需要创建 Profile Resource 在自己账户中： 点击页面 `INIT`
+2. 用户可以分别修改自己的个人信息，并记录到Flow 区块链中
+3. 用户可以看到Flow区块链上其他添加信息的用户
 
 
 # 启动/依赖
@@ -114,7 +120,7 @@ flow keys generate
 获得如下结果：
 ```
  Store private key safely and don't share with anyone! 
-Private Key      a2df7ec91b9b3d65dced51f9d37494397d2233f37fb183303be93a8c4b8fb25c 
+Private Key      a2df7ec91b9b3d65dced51f9d37494397d2233f37fb183303b.....
 Public Key       20a3fcf4377a8a4f32a146db3178ae31cd72d50d6fbc0c517d19ab36bc791931dd75e51961a6f63559d09ed29528ac793357e91a7d1fa410ea1b5f1f92c1e7db
 ```
 **注意: 以上为测试地址，任何人可以使用。**☝️
@@ -191,7 +197,7 @@ flow init
 ```
 "testnet-account": {
       "address": "8f8f12c1c5ba67e9",
-      "keys": "a2df7ec91b9b3d65dced51f9d37494397d2233f37fb183303be93a8c4b8fb25c"
+      "keys": "a2df7ec91b9b3d65dced51f9d37494397d2233f37....."
     }
 ```
 **注意： `address` 不用填写 `0x` 前缀。**
@@ -238,7 +244,7 @@ flow init
 		},
 		"testnet-account": {
 			"address":"8f8f12c1c5ba67e9", 
-			"keys": "a2df7ec91b9b3d65dced51f9d37494397d2233f37fb183303be93a8c4b8fb25c"
+			"keys": "a2df7ec91b9b3d65dced51f9d37494397d2233....."
 		}
 		
 	},
@@ -560,5 +566,6 @@ web/hooks
 web/components
 ```
 更多详解查看: [flow-app-quickstart](https://docs.onflow.org/flow-js-sdk/flow-app-quickstart#extra-credit---adding-an-interface-that-uses-our-functions)
+
 
 

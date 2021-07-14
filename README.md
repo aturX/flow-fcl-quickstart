@@ -9,7 +9,7 @@ Due to version iteration, the latest version deployment process in the test netw
 
 The Demo:  [visit](https://flowfans.on.fleek.co/) 
 
-![image](https://swarm-gateways.net/bzz:/918fbce211983085102ea2fbc47ac128c1c795e7afc3727561c0f176120d5082/1626232617(1).jpg)
+![image](./demo.jpg)
 
 1. The user needs to create a Profile Resource in his/her account: click the `INIT` page
 2. Users can modify their personal information respectively and record it in Flow Blockchain
@@ -571,6 +571,8 @@ web/components
 See more details: [flow-app-quickstart](https://docs.onflow.org/flow-js-sdk/flow-app-quickstart#extra-credit---adding-an-interface-that-uses-our-functions)
 
 
+- More 
 
+[awesome-flow](https://github.com/FlowFans/awesome-flow)
 
 

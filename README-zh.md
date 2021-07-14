@@ -6,7 +6,7 @@
 
 Demo:  [visit](https://flowfans.on.fleek.co/) 
 
-![image](https://swarm-gateways.net/bzz:/918fbce211983085102ea2fbc47ac128c1c795e7afc3727561c0f176120d5082/1626232617(1).jpg)
+![image](./demo.jpg)
 
 1. 用户需要创建 Profile Resource 在自己账户中： 点击页面 `INIT`
 2. 用户可以分别修改自己的个人信息，并记录到Flow 区块链中
@@ -568,4 +568,6 @@ web/components
 更多详解查看: [flow-app-quickstart](https://docs.onflow.org/flow-js-sdk/flow-app-quickstart#extra-credit---adding-an-interface-that-uses-our-functions)
 
 
+- 更多查看 
 
+[awesome-flow](https://github.com/FlowFans/awesome-flow)
